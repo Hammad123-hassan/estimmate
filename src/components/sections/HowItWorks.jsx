@@ -69,11 +69,12 @@ export default function HowItWorks({ lastEstimate }) {
       })
 
       const stepBlocks = gsap.utils.toArray(steps.querySelectorAll('[data-step-block]'))
+      const isMobile = window.matchMedia('(max-width: 639px)').matches
       stepBlocks.forEach((block, index) => {
         gsap.set(block, {
           autoAlpha: 0,
-          y: 60,
-          x: index % 2 === 0 ? -40 : 40,
+          y: isMobile ? 40 : 60,
+          x: isMobile ? 0 : index % 2 === 0 ? -40 : 40,
         })
 
         const svgIcons = block.querySelectorAll('svg')
@@ -123,17 +124,17 @@ export default function HowItWorks({ lastEstimate }) {
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="relative overflow-hidden bg-section-navy py-20 text-white"
+      className="relative overflow-hidden bg-section-navy py-14 text-white sm:py-20"
     >
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-40" />
       <div className="pointer-events-none absolute right-0 top-24 h-80 w-80 rounded-full bg-brand-400/15 blur-3xl" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 data-how-title className="text-center text-3xl font-extrabold sm:text-4xl">
+        <h2 data-how-title className="text-center text-2xl font-extrabold sm:text-3xl md:text-4xl">
           How it works
         </h2>
 
-        <div ref={pillsRef} className="mt-8 flex flex-wrap justify-center gap-2">
+        <div ref={pillsRef} className="mt-6 flex flex-wrap justify-center gap-1.5 sm:mt-8 sm:gap-2">
           {HOW_IT_WORKS_STEPS.map((step, i) => (
             <button
               key={step.id}
@@ -145,7 +146,7 @@ export default function HowItWorks({ lastEstimate }) {
                   .querySelector(`[data-step-block="${i}"]`)
                   ?.scrollIntoView({ behavior: 'smooth', block: 'center' })
               }}
-              className={`cursor-pointer rounded-full px-4 py-1.5 text-sm font-semibold transition duration-300 ${
+              className={`cursor-pointer rounded-full px-3 py-1.5 text-xs font-semibold transition duration-300 sm:px-4 sm:text-sm ${
                 i === activeStep ? 'bg-white text-navy-800 shadow-lg' : 'bg-white/10 text-white/80 hover:bg-white/20'
               }`}
             >
@@ -154,7 +155,7 @@ export default function HowItWorks({ lastEstimate }) {
           ))}
         </div>
 
-        <div ref={stepsRef} className="mt-12 space-y-20">
+        <div ref={stepsRef} className="mt-10 space-y-14 sm:mt-12 sm:space-y-20">
           {HOW_IT_WORKS_STEPS.map((step, index) => {
             const reverse = index % 2 === 1
             const isActive = index === activeStep
@@ -162,7 +163,7 @@ export default function HowItWorks({ lastEstimate }) {
               <div
                 key={step.id}
                 data-step-block={index}
-                className={`grid items-center gap-8 lg:grid-cols-2 ${
+                className={`grid items-center gap-6 lg:grid-cols-2 lg:gap-8 ${
                   isActive ? 'opacity-100' : 'opacity-90'
                 }`}
               >
@@ -170,8 +171,8 @@ export default function HowItWorks({ lastEstimate }) {
                   <p className="text-sm font-bold uppercase tracking-wider text-gold-400">
                     Step {index + 1}
                   </p>
-                  <h3 className="mt-2 text-3xl font-extrabold sm:text-4xl">{step.title}</h3>
-                  <p className="mt-4 max-w-md text-lg text-white/85">{step.description}</p>
+                  <h3 className="mt-2 text-2xl font-extrabold sm:text-3xl md:text-4xl">{step.title}</h3>
+                  <p className="mt-3 max-w-md text-base text-white/85 sm:mt-4 sm:text-lg">{step.description}</p>
                   {lastEstimate && index === 0 && (
                     <p className="mt-5 rounded-xl bg-white/10 px-4 py-3 text-sm">
                       Latest brief ready — approx.{' '}
@@ -180,11 +181,11 @@ export default function HowItWorks({ lastEstimate }) {
                       </span>
                     </p>
                   )}
-                  <Button variant="white" className="mt-6" onClick={() => setActiveStep(index)}>
+                  <Button variant="white" className="mt-6 w-full sm:w-auto" onClick={() => setActiveStep(index)}>
                     Explore this step
                   </Button>
                 </div>
-                <div className={reverse ? 'lg:order-1' : ''}>
+                <div className={`min-w-0 ${reverse ? 'lg:order-1' : ''}`}>
                   {step.demo === 'create' && <CreateDemo lastEstimate={lastEstimate} />}
                   {step.demo === 'refine' && <RefineDemo />}
                   {step.demo === 'publish' && <PublishDemo />}
@@ -231,7 +232,7 @@ function CreateDemo({ lastEstimate }) {
   )
 
   return (
-    <div className="rounded-2xl bg-white p-4 text-ink shadow-2xl shadow-black/25 sm:p-5">
+    <div className="rounded-2xl bg-white p-3 text-ink shadow-2xl shadow-black/25 sm:p-5">
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2 text-ink-muted">
           <AnimatedIcon>
@@ -248,7 +249,7 @@ function CreateDemo({ lastEstimate }) {
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row">
-        <div className="relative flex-1">
+        <div className="relative min-w-0 flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" />
           <input
             value={query}
@@ -260,6 +261,7 @@ function CreateDemo({ lastEstimate }) {
         <Button
           variant="primary"
           size="sm"
+          className="w-full shrink-0 sm:w-auto"
           onClick={() =>
             setRows((prev) => [
               {
@@ -278,27 +280,29 @@ function CreateDemo({ lastEstimate }) {
         </Button>
       </div>
 
-      <div className="mt-4 overflow-hidden rounded-xl border border-brand-100">
-        <div className="grid grid-cols-3 gap-2 bg-brand-50/70 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-ink-muted">
-          <span>Updated</span>
-          <span>Updated by</span>
-          <span className="text-right">Total cost</span>
+      <div className="mt-4 overflow-x-auto rounded-xl border border-brand-100">
+        <div className="min-w-[280px]">
+          <div className="grid grid-cols-3 gap-2 bg-brand-50/70 px-3 py-2 text-[10px] font-semibold uppercase tracking-wide text-ink-muted sm:text-xs">
+            <span>Updated</span>
+            <span>Updated by</span>
+            <span className="text-right">Total cost</span>
+          </div>
+          <ul>
+            {filtered.map((row, i) => (
+              <li
+                key={`${row.updated}-${row.updatedBy}-${i}`}
+                className="grid grid-cols-3 gap-2 border-t border-brand-50 px-3 py-3 text-xs transition hover:bg-brand-50/50 sm:text-sm"
+              >
+                <span className="truncate">{row.updated}</span>
+                <span className="truncate">{row.updatedBy}</span>
+                <span className="text-right font-semibold tabular-nums">{row.totalCost}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul>
-          {filtered.map((row, i) => (
-            <li
-              key={`${row.updated}-${row.updatedBy}-${i}`}
-              className="grid grid-cols-3 gap-2 border-t border-brand-50 px-3 py-3 text-sm transition hover:bg-brand-50/50"
-            >
-              <span>{row.updated}</span>
-              <span className="truncate">{row.updatedBy}</span>
-              <span className="text-right font-semibold">{row.totalCost}</span>
-            </li>
-          ))}
-        </ul>
       </div>
 
-      <div className="mt-4 flex items-center gap-3 rounded-lg bg-navy-900 px-3 py-2 text-white">
+      <div className="mt-4 flex items-center gap-2 rounded-lg bg-navy-900 px-2.5 py-2 text-white sm:gap-3 sm:px-3">
         <button
           type="button"
           onClick={() => setPlaying((p) => !p)}
@@ -307,10 +311,10 @@ function CreateDemo({ lastEstimate }) {
         >
           <Play className="h-4 w-4" fill="currentColor" />
         </button>
-        <span className="text-xs tabular-nums">
+        <span className="shrink-0 text-[10px] tabular-nums sm:text-xs">
           0:{String(Math.floor((progress / 100) * 28)).padStart(2, '0')} / 0:28
         </span>
-        <div className="h-1 flex-1 overflow-hidden rounded-full bg-white/20">
+        <div className="h-1 min-w-0 flex-1 overflow-hidden rounded-full bg-white/20">
           <div className="h-full rounded-full bg-brand-400 transition-all" style={{ width: `${progress}%` }} />
         </div>
       </div>
@@ -343,7 +347,7 @@ function RefineDemo() {
 
   return (
     <div className="grid gap-3 rounded-2xl bg-white p-3 text-ink shadow-2xl shadow-black/25 sm:grid-cols-[1fr_0.85fr] sm:p-4">
-      <div className="rounded-xl border border-brand-100">
+      <div className="min-w-0 overflow-hidden rounded-xl border border-brand-100">
         <div className="flex items-center justify-between border-b border-brand-50 px-3 py-2">
           <span className="text-sm font-bold">Work</span>
           <span className="text-sm font-bold text-brand-600">$107,300</span>
@@ -352,14 +356,16 @@ function RefineDemo() {
           {rows.map((row) => (
             <li
               key={row.name}
-              className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-2 border-t border-brand-50 px-3 py-2.5 text-xs sm:text-sm"
+              className="flex flex-col gap-1.5 border-t border-brand-50 px-3 py-2.5 text-xs sm:grid sm:grid-cols-[1fr_auto_auto_auto] sm:items-center sm:gap-2 sm:text-sm"
             >
               <span className="truncate font-medium">{row.name}</span>
-              <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-semibold text-brand-700">
-                {row.role}
-              </span>
-              <span className="text-ink-muted">{row.hours}</span>
-              <span className="font-semibold">{row.cost}</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-semibold text-brand-700">
+                  {row.role}
+                </span>
+                <span className="text-ink-muted">{row.hours}</span>
+                <span className="font-semibold sm:ml-0">{row.cost}</span>
+              </div>
             </li>
           ))}
         </ul>
@@ -422,13 +428,13 @@ function PublishDemo() {
   const max = Math.max(...items.map((i) => i.value))
 
   return (
-    <div className="rounded-2xl bg-white p-4 text-ink shadow-2xl shadow-black/25 sm:p-5">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <div className="flex gap-1">
+    <div className="rounded-2xl bg-white p-3 text-ink shadow-2xl shadow-black/25 sm:p-5">
+      <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+        <div data-hide-scrollbar className="flex gap-1 overflow-x-auto">
           {['Team', 'Rates', 'Context', 'Dashboard'].map((tab) => (
             <span
               key={tab}
-              className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${
+              className={`shrink-0 rounded-lg px-2.5 py-1 text-xs font-semibold ${
                 tab === 'Dashboard' ? 'bg-brand-50 text-brand-700' : 'text-ink-muted'
               }`}
             >
@@ -436,7 +442,7 @@ function PublishDemo() {
             </span>
           ))}
         </div>
-        <span className="rounded-lg bg-navy-800 px-3 py-1.5 text-sm font-bold text-white">
+        <span className="w-fit rounded-lg bg-navy-800 px-3 py-1.5 text-sm font-bold text-white">
           SUM $80,960
         </span>
       </div>

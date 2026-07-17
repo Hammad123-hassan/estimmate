@@ -17,7 +17,7 @@ export default function QuoteSection() {
             >
               “
             </span>
-            <p className="relative text-2xl font-extrabold leading-snug text-ink sm:text-3xl md:text-4xl">
+            <p className="relative text-xl font-extrabold leading-snug text-ink sm:text-3xl md:text-4xl">
               Large IT projects run{' '}
               <span className="text-brand-600 transition hover:text-gold-600">{overBudget}%</span> over budget
               and deliver <span className="text-brand-600 transition hover:text-gold-600">{lessValue}%</span>{' '}

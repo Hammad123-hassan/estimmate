@@ -38,6 +38,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
@@ -46,10 +47,18 @@
     color: var(--color-ink);
     background: var(--color-surface);
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
   }
 
   * {
     box-sizing: border-box;
+  }
+
+  img,
+  video,
+  svg,
+  canvas {
+    max-width: 100%;
   }
 
   html.has-interactive-cursor,
@@ -161,5 +170,16 @@
   .slider-edge-fade {
     mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
     -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+
+  .hide-scrollbar,
+  [data-hide-scrollbar] {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar,
+  [data-hide-scrollbar]::-webkit-scrollbar {
+    display: none;
   }
 }

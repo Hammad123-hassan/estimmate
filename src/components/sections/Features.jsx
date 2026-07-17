@@ -46,24 +46,24 @@ export default function Features() {
   }, [slide])
 
   return (
-    <section id="features" className="relative overflow-hidden bg-section-navy py-20 text-white">
+    <section id="features" className="relative overflow-hidden bg-section-navy py-14 text-white sm:py-20">
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-30" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <h2 data-feature-title className="text-center text-3xl font-extrabold sm:text-4xl">
+          <h2 data-feature-title className="text-center text-2xl font-extrabold sm:text-3xl md:text-4xl">
             {current.title}
           </h2>
-          <p data-feature-desc className="mx-auto mt-4 max-w-2xl text-center text-white/85">
+          <p data-feature-desc className="mx-auto mt-3 max-w-2xl text-center text-sm text-white/85 sm:mt-4 sm:text-base">
             {current.description}
           </p>
         </Reveal>
 
-        <div className="relative mt-12">
+        <div className="relative mt-8 sm:mt-12">
           <button
             type="button"
             onClick={prev}
-            className="absolute -left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white text-brand-600 shadow-lg sm:-left-4"
+            className="absolute left-1 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white text-brand-600 shadow-lg sm:-left-4 sm:h-11 sm:w-11"
             aria-label="Previous slide"
           >
             <AnimatedIcon>
@@ -73,7 +73,7 @@ export default function Features() {
           <button
             type="button"
             onClick={next}
-            className="absolute -right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white text-brand-600 shadow-lg sm:-right-4"
+            className="absolute right-1 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white text-brand-600 shadow-lg sm:-right-4 sm:h-11 sm:w-11"
             aria-label="Next slide"
           >
             <AnimatedIcon>
@@ -81,7 +81,7 @@ export default function Features() {
             </AnimatedIcon>
           </button>
 
-          <div ref={viewportRef} className="overflow-hidden rounded-2xl bg-white text-ink shadow-2xl">
+          <div ref={viewportRef} className="mx-0 overflow-hidden rounded-xl bg-white text-ink shadow-2xl sm:rounded-2xl">
             <div ref={trackRef} className="flex will-change-transform">
               {FEATURE_SLIDES.map((s, i) => (
                 <div key={s.id} className="w-full shrink-0 grow-0 basis-full">
@@ -136,49 +136,52 @@ function SlideChrome({ slideIndex, active, totals, expanded, setExpanded, onTab 
 
   return (
     <div>
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-brand-50 px-4 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-brand-50 px-3 py-3 sm:gap-3 sm:px-4">
         <div className="flex items-center gap-2">
           <span className="font-bold">EMP</span>
           <span className="inline-flex items-center gap-1 rounded-md bg-brand-50 px-2 py-0.5 text-xs font-semibold text-brand-600">
             V2 <ChevronDown className="h-3 w-3" />
           </span>
         </div>
-        <div className="relative hidden min-w-48 flex-1 sm:block sm:max-w-xs">
+        <div className="relative order-3 hidden w-full min-w-0 flex-1 sm:order-none sm:block sm:max-w-xs">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" />
           <input
             className="field-input h-9 w-full rounded-full border bg-brand-50/40 pl-9 pr-3 text-sm outline-none"
             placeholder="Search"
           />
         </div>
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" className="text-ink-muted">
+        <div className="flex items-center gap-1 sm:gap-2">
+          <Button variant="ghost" size="sm" className="px-2 text-ink-muted sm:px-4">
             <AnimatedIcon>
               <Cloud className="h-4 w-4" />
             </AnimatedIcon>{' '}
-            Save
+            <span className="hidden sm:inline">Save</span>
           </Button>
-          <Button variant="primary" size="sm">
+          <Button variant="primary" size="sm" className="px-2.5 sm:px-4">
             <AnimatedIcon>
               <Share2 className="h-4 w-4" />
             </AnimatedIcon>{' '}
-            Share
+            <span className="hidden sm:inline">Share</span>
           </Button>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-3 border-b border-brand-50 px-4 py-3">
+      <div
+        data-hide-scrollbar
+        className="flex gap-2 overflow-x-auto border-b border-brand-50 px-3 py-3 sm:flex-wrap sm:gap-3 sm:px-4"
+      >
         <MetricChip label="Optimistic" value={`$${totals.optimistic.toLocaleString()}`} tone="text-emerald-600" />
         <MetricChip label="Pessimistic" value={`$${totals.pessimistic.toLocaleString()}`} tone="text-rose-500" />
         <MetricChip label="SUM" value={`$${totals.sum.toLocaleString()}`} tone="text-brand-600" />
       </div>
 
-      <div className="flex gap-1 overflow-x-auto border-b border-brand-50 px-2">
+      <div data-hide-scrollbar className="flex gap-1 overflow-x-auto border-b border-brand-50 px-2">
         {tabs.map((t) => (
           <button
             key={t}
             type="button"
             onClick={() => onTab(t)}
-            className={`cursor-pointer whitespace-nowrap px-3 py-3 text-sm font-medium transition ${
+            className={`cursor-pointer whitespace-nowrap px-2.5 py-2.5 text-xs font-medium transition sm:px-3 sm:py-3 sm:text-sm ${
               activeTab === t
                 ? 'border-b-2 border-brand-500 text-brand-600'
                 : 'text-ink-muted hover:text-ink'
@@ -189,7 +192,7 @@ function SlideChrome({ slideIndex, active, totals, expanded, setExpanded, onTab 
         ))}
       </div>
 
-      <div className="p-4">
+      <div className="p-3 sm:p-4">
         {slideIndex === 1 ? (
           <DashboardPreview active={active} />
         ) : slideIndex === 2 ? (
@@ -204,9 +207,9 @@ function SlideChrome({ slideIndex, active, totals, expanded, setExpanded, onTab 
 
 function MetricChip({ label, value, tone }) {
   return (
-    <div className="rounded-xl bg-brand-50 px-3 py-2">
+    <div className="shrink-0 rounded-xl bg-brand-50 px-3 py-2">
       <p className="text-[10px] font-semibold uppercase tracking-wide text-ink-muted">{label}</p>
-      <p className={`text-sm font-bold ${tone}`}>{value}</p>
+      <p className={`text-sm font-bold tabular-nums ${tone}`}>{value}</p>
     </div>
   )
 }
@@ -237,8 +240,8 @@ function ScopeTable({ expanded, setExpanded }) {
         </Button>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[640px] text-left text-sm">
+      <div className="overflow-x-auto rounded-lg [-webkit-overflow-scrolling:touch]">
+        <table className="w-full min-w-[560px] text-left text-sm">
           <thead>
             <tr className="text-xs uppercase tracking-wide text-ink-muted">
               <th className="pb-2 font-semibold">Item</th>

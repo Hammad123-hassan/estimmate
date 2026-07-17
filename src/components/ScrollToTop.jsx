@@ -54,7 +54,7 @@ export default function ScrollToTop() {
       onClick={scrollUp}
       aria-label="Scroll to top"
       data-cursor
-      className="fixed right-5 bottom-5 z-90 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-brand-gradient text-white shadow-lg shadow-brand-500/30 ring-2 ring-white/70 sm:right-7 sm:bottom-7"
+      className="fixed right-4 bottom-4 z-90 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-brand-gradient text-white shadow-lg shadow-brand-500/30 ring-2 ring-white/70 sm:right-7 sm:bottom-7 sm:h-12 sm:w-12"
       style={{ visibility: 'hidden' }}
     >
       <ArrowUp className="h-5 w-5" strokeWidth={2.5} />

@@ -35,14 +35,14 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="grid min-h-screen lg:grid-cols-[minmax(360px,0.42fr)_1fr]">
-      <section className="flex flex-col bg-hero-glow px-6 py-8 sm:px-10">
+    <div className="grid min-h-screen lg:grid-cols-[minmax(0,0.42fr)_1fr]">
+      <section className="flex flex-col bg-hero-glow px-4 py-6 sm:px-10 sm:py-8">
         <div className="flex justify-center lg:justify-start">
           <Logo />
         </div>
-        <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-10">
-          <div className="rounded-[28px] border border-brand-100 bg-white p-7 shadow-xl shadow-navy-900/5 sm:p-8">
-            <h1 className="text-3xl font-extrabold text-ink">Create account</h1>
+        <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-8 sm:py-10">
+          <div className="rounded-2xl border border-brand-100 bg-white p-5 shadow-xl shadow-navy-900/5 sm:rounded-[28px] sm:p-8">
+            <h1 className="text-2xl font-extrabold text-ink sm:text-3xl">Create account</h1>
             <p className="mt-2 text-sm text-ink-muted">Start building structured estimates in minutes.</p>
 
             <form className="mt-7 space-y-4" onSubmit={handleSubmit} noValidate>

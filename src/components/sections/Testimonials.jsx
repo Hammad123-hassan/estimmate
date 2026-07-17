@@ -123,18 +123,18 @@ export default function Testimonials() {
   }, [index, paused, openCase])
 
   return (
-    <section id="cases" className="relative overflow-hidden bg-section-navy py-20 text-white">
+    <section id="cases" className="relative overflow-hidden bg-section-navy py-14 text-white sm:py-20">
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-25" />
       <div className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-16 bottom-10 h-64 w-64 rounded-full bg-gold-500/15 blur-3xl" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <h2 className="text-center text-3xl font-extrabold sm:text-4xl">Clients feedback</h2>
+          <h2 className="text-center text-2xl font-extrabold sm:text-3xl md:text-4xl">Clients feedback</h2>
         </Reveal>
 
         <div
-          className="relative mt-12"
+          className="relative mt-8 sm:mt-12"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocusCapture={() => setPaused(true)}
@@ -145,7 +145,7 @@ export default function Testimonials() {
           <button
             type="button"
             onClick={prev}
-            className="absolute left-1 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-navy-900/90 text-gold-400 shadow-lg backdrop-blur-sm transition hover:border-gold-400/50 hover:bg-navy-800 sm:left-2"
+            className="absolute left-0 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-navy-900/90 text-gold-400 shadow-lg backdrop-blur-sm transition hover:border-gold-400/50 hover:bg-navy-800 sm:left-2 sm:h-11 sm:w-11"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -153,7 +153,7 @@ export default function Testimonials() {
           <button
             type="button"
             onClick={next}
-            className="absolute right-1 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-navy-900/90 text-gold-400 shadow-lg backdrop-blur-sm transition hover:border-gold-400/50 hover:bg-navy-800 sm:right-2"
+            className="absolute right-0 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-navy-900/90 text-gold-400 shadow-lg backdrop-blur-sm transition hover:border-gold-400/50 hover:bg-navy-800 sm:right-2 sm:h-11 sm:w-11"
             aria-label="Next testimonial"
           >
             <ChevronRight className="h-5 w-5" />
@@ -161,13 +161,13 @@ export default function Testimonials() {
 
           <div
             ref={viewportRef}
-            className="slider-edge-fade overflow-hidden py-4"
+            className="slider-edge-fade overflow-hidden px-8 py-4 sm:px-12"
           >
-            <div ref={trackRef} className="flex items-stretch gap-5 will-change-transform">
+            <div ref={trackRef} className="flex items-stretch gap-3 will-change-transform sm:gap-5">
               {looped.map((item, i) => (
                 <div
                   key={`${item.name || item.cta || 'h'}-${i}`}
-                  className="w-[72%] shrink-0 grow-0 basis-[72%] sm:w-[42%] sm:basis-[42%] lg:w-[36%] lg:basis-[36%]"
+                  className="w-[85%] shrink-0 grow-0 basis-[85%] sm:w-[42%] sm:basis-[42%] lg:w-[36%] lg:basis-[36%]"
                 >
                   <TestimonialCard
                     item={item}
@@ -209,7 +209,7 @@ export default function Testimonials() {
               An agency cut proposal turnaround from 3 days to under 1 hour, improved win rate by 22%, and
               standardized estimation across pre-sales and delivery.
             </p>
-            <div className="mt-5 grid grid-cols-3 gap-2 text-center">
+            <div className="mt-5 grid grid-cols-1 gap-2 text-center min-[380px]:grid-cols-3">
               <Stat label="Time saved" value="85%" />
               <Stat label="Win rate" value="+22%" />
               <Stat label="Margin lift" value="+9%" />
@@ -236,7 +236,7 @@ function TestimonialCard({ item, onCase, onSelect }) {
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') onSelect()
         }}
-        className="relative flex h-full min-h-72 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-3xl bg-white/8 p-7 text-center ring-1 ring-white/10"
+        className="relative flex h-full min-h-64 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl bg-white/8 p-5 text-center ring-1 ring-white/10 sm:min-h-72 sm:rounded-3xl sm:p-7"
       >
         <div data-t-glow className="pointer-events-none absolute inset-0 bg-brand-gradient opacity-0" />
         <div
@@ -274,7 +274,7 @@ function TestimonialCard({ item, onCase, onSelect }) {
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') onSelect()
       }}
-      className="relative flex h-full min-h-72 cursor-pointer flex-col overflow-hidden rounded-3xl bg-white/8 p-7 ring-1 ring-white/10"
+      className="relative flex h-full min-h-64 cursor-pointer flex-col overflow-hidden rounded-2xl bg-white/8 p-5 ring-1 ring-white/10 sm:min-h-72 sm:rounded-3xl sm:p-7"
     >
       <div data-t-glow className="pointer-events-none absolute inset-0 bg-brand-gradient opacity-0" />
       <div

@@ -7,18 +7,18 @@ export default function WhySection() {
   const cardsRef = useStaggerCards('[data-card]')
 
   return (
-    <section id="why" className="relative overflow-hidden bg-surface py-20">
+    <section id="why" className="relative overflow-hidden bg-surface py-14 sm:py-20">
       <div className="pointer-events-none absolute left-1/4 top-32 h-64 w-64 rounded-full bg-brand-200/40 blur-3xl" />
       <div className="pointer-events-none absolute right-1/4 bottom-20 h-56 w-56 rounded-full bg-gold-400/25 blur-3xl" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <h2 className="text-center text-3xl font-extrabold text-ink sm:text-4xl">
+          <h2 className="text-center text-2xl font-extrabold text-ink sm:text-3xl md:text-4xl">
             Why teams switch to <span className="text-gradient">EstimMate</span>
           </h2>
         </Reveal>
 
-        <div ref={cardsRef} className="mt-12 grid gap-5 lg:grid-cols-3">
+        <div ref={cardsRef} className="mt-8 grid gap-4 sm:mt-12 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
           {COMPARISON.map((card) => (
             <ComparisonCard key={card.id} card={card} />
           ))}
@@ -35,7 +35,7 @@ function ComparisonCard({ card }) {
   return (
     <article
       data-card
-      className={`group flex h-full cursor-default flex-col rounded-[24px] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl ${
+      className={`group flex h-full cursor-default flex-col rounded-2xl p-5 transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:rounded-[24px] sm:p-6 ${
         isBrand
           ? 'bg-brand-gradient text-white shadow-lg shadow-brand-500/30'
           : isSoft

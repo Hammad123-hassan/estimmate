@@ -14,15 +14,15 @@ export default function Guides() {
   const visible = filter === 'All' ? GUIDES : GUIDES.filter((g) => g.tag === filter)
 
   return (
-    <section id="guides" className="bg-surface py-20">
+    <section id="guides" className="bg-surface py-14 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <h2 className="text-3xl font-extrabold text-ink sm:text-4xl">Guides</h2>
-              <p className="mt-2 text-ink-muted">Practical playbooks for estimation, delivery, and sales.</p>
+              <h2 className="text-2xl font-extrabold text-ink sm:text-3xl md:text-4xl">Guides</h2>
+              <p className="mt-2 text-sm text-ink-muted sm:text-base">Practical playbooks for estimation, delivery, and sales.</p>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex w-full flex-wrap gap-2 sm:w-auto">
               {tags.map((tag) => (
                 <button
                   key={tag}
@@ -41,7 +41,7 @@ export default function Guides() {
           </div>
         </Reveal>
 
-        <div ref={cardsRef} className="mt-10 grid gap-4 md:grid-cols-3">
+        <div ref={cardsRef} className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((guide) => (
             <article
               key={guide.id}

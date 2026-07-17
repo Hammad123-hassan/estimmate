@@ -15,17 +15,17 @@ export default function Pricing() {
   const gridRef = useStaggerIn('[data-stagger]', { stagger: 0.2, y: 56, x: 28 })
 
   return (
-    <section id="pricing" className="bg-surface py-20">
+    <section id="pricing" className="bg-surface py-14 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <h2 className="text-center text-3xl font-extrabold text-ink sm:text-4xl">Upgrade your workflow</h2>
+          <h2 className="text-center text-2xl font-extrabold text-ink sm:text-3xl md:text-4xl">Upgrade your workflow</h2>
         </Reveal>
 
-        <div className="relative mx-auto mt-8 flex w-fit items-center rounded-full border border-brand-100 bg-white p-1 shadow-sm">
+        <div className="relative mx-auto mt-6 flex w-full max-w-xs items-center rounded-full border border-brand-100 bg-white p-1 shadow-sm sm:mt-8 sm:w-fit sm:max-w-none">
           <button
             type="button"
             onClick={() => setBilling('monthly')}
-            className={`cursor-pointer rounded-full px-5 py-2 text-sm font-semibold transition ${
+            className={`flex-1 cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition sm:flex-none sm:px-5 ${
               billing === 'monthly' ? 'bg-brand-gradient text-white shadow' : 'text-ink-muted hover:text-ink'
             }`}
           >
@@ -34,7 +34,7 @@ export default function Pricing() {
           <button
             type="button"
             onClick={() => setBilling('yearly')}
-            className={`relative cursor-pointer rounded-full px-5 py-2 text-sm font-semibold transition ${
+            className={`relative flex-1 cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition sm:flex-none sm:px-5 ${
               billing === 'yearly' ? 'bg-brand-gradient text-white shadow' : 'text-ink-muted hover:text-ink'
             }`}
           >
@@ -45,7 +45,7 @@ export default function Pricing() {
           </button>
         </div>
 
-        <div ref={gridRef} className="mt-12 grid gap-5 lg:grid-cols-3">
+        <div ref={gridRef} className="mt-8 grid gap-4 sm:mt-12 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
           {PRICING_PLANS.map((plan) => (
             <PricingCard
               key={plan.id}
@@ -78,7 +78,7 @@ function PricingCard({ plan, billing, mode, onModeChange }) {
             : 'border border-slate-200 bg-white shadow-sm'
       }`}
     >
-      <div className={`relative p-6 ${plan.featured ? 'bg-brand-gradient text-white' : ''}`}>
+      <div className={`relative p-5 sm:p-6 ${plan.featured ? 'bg-brand-gradient text-white' : ''}`}>
         {plan.hasToggle && (
           <div
             className={`mb-4 inline-flex rounded-full p-1 text-xs font-semibold ${
@@ -116,7 +116,7 @@ function PricingCard({ plan, billing, mode, onModeChange }) {
               {plan.hasToggle && mode === 'team' ? ' · team seats' : ''}
             </p>
             <p className="mt-4">
-              <span className={`text-4xl font-extrabold ${plan.featured ? 'text-white' : 'text-ink'}`}>
+              <span className={`text-3xl font-extrabold sm:text-4xl ${plan.featured ? 'text-white' : 'text-ink'}`}>
                 ${price}
               </span>
               <span className={`ml-1 text-sm ${plan.featured ? 'text-white/80' : 'text-ink-muted'}`}>
@@ -135,7 +135,7 @@ function PricingCard({ plan, billing, mode, onModeChange }) {
         </Button>
       </div>
 
-      <ul className="flex flex-1 flex-col gap-3 p-6">
+      <ul className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
         {plan.features.map((feature) => (
           <li key={feature} className="flex items-start gap-2 text-sm text-ink">
             <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
@@ -197,18 +197,18 @@ function LayerIcon({ layers, light }) {
 
 function ScaleBanner() {
   return (
-    <div className="mt-12 flex flex-col items-start justify-between gap-4 rounded-2xl border border-brand-100 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:p-6">
-      <div className="flex gap-4">
+    <div className="mt-8 flex w-full flex-col items-start justify-between gap-4 rounded-2xl border border-brand-100 bg-white p-4 shadow-sm sm:mt-12 sm:flex-row sm:items-center sm:p-6">
+      <div className="flex min-w-0 gap-4">
         <span className="w-1 shrink-0 rounded-full bg-brand-500" aria-hidden />
-        <div>
-          <h3 className="text-lg font-extrabold text-ink">Scale with custom solutions</h3>
+        <div className="min-w-0">
+          <h3 className="text-base font-extrabold text-ink sm:text-lg">Scale with custom solutions</h3>
           <p className="mt-1 text-sm text-ink-muted">
             Get custom features, workflows, and integrations designed for your team
           </p>
         </div>
       </div>
-      <AnimatedButton className="shrink-0">
-        <Button to="/contact" variant="soft" className="cursor-pointer">
+      <AnimatedButton className="w-full shrink-0 sm:w-auto">
+        <Button to="/contact" variant="soft" className="w-full cursor-pointer sm:w-auto">
           <Mail className="h-4 w-4" /> Contact us
         </Button>
       </AnimatedButton>

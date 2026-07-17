@@ -30,14 +30,14 @@ export default function BuiltFor() {
   })
 
   return (
-    <section id="built-for" className="relative overflow-hidden bg-section-navy py-20 text-white">
+    <section id="built-for" className="relative overflow-hidden bg-section-navy py-14 text-white sm:py-20">
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-30" />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <h2 className="text-center text-3xl font-extrabold sm:text-4xl">Built specially for</h2>
+          <h2 className="text-center text-2xl font-extrabold sm:text-3xl md:text-4xl">Built specially for</h2>
         </Reveal>
 
-        <div ref={cardsRef} className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div ref={cardsRef} className="mt-8 grid gap-3 sm:mt-12 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {BUILT_FOR.map((item) => {
             const Icon = ICONS[item.icon]
             return (

@@ -34,28 +34,28 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-hero-glow px-4 py-16">
+    <div className="relative flex min-h-screen items-center justify-center bg-hero-glow px-4 py-20 sm:py-16">
       <div className="pointer-events-none absolute inset-0 bg-navy-900/25" />
-      <div className="absolute left-4 top-4 z-10 sm:left-6 sm:top-6">
+      <div className="absolute left-3 top-3 z-10 sm:left-6 sm:top-6">
         <Logo />
       </div>
       <button
         type="button"
         onClick={() => navigate(-1)}
-        className="absolute right-4 top-4 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/90 text-ink shadow-sm hover:bg-white sm:right-6 sm:top-6"
+        className="absolute right-3 top-3 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/90 text-ink shadow-sm hover:bg-white sm:right-6 sm:top-6"
         aria-label="Close"
       >
         <X className="h-5 w-5" />
       </button>
 
-      <div ref={cardRef} className="relative w-full max-w-md">
-        <div className="absolute left-1/2 top-0 z-10 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-brand-50 shadow-md ring-4 ring-white">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-gradient text-white shadow-lg shadow-brand-500/30">
+      <div ref={cardRef} className="relative mt-6 w-full max-w-md sm:mt-0">
+        <div className="absolute left-1/2 top-0 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-brand-50 shadow-md ring-4 ring-white sm:h-16 sm:w-16">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-gradient text-white shadow-lg shadow-brand-500/30 sm:h-10 sm:w-10">
             <Send className="h-5 w-5" />
           </span>
         </div>
 
-        <div className="rounded-[28px] border border-brand-100 bg-white px-6 pb-7 pt-12 shadow-2xl shadow-navy-900/15 sm:px-8">
+        <div className="rounded-2xl border border-brand-100 bg-white px-5 pb-6 pt-11 shadow-2xl shadow-navy-900/15 sm:rounded-[28px] sm:px-8 sm:pb-7 sm:pt-12">
           {sent ? (
             <div className="py-6 text-center">
               <CheckCircle2 className="mx-auto h-12 w-12 text-brand-500" />
@@ -74,7 +74,7 @@ export default function ContactPage() {
             </div>
           ) : (
             <>
-              <h1 className="text-center text-3xl font-extrabold text-ink">Contact us</h1>
+              <h1 className="text-center text-2xl font-extrabold text-ink sm:text-3xl">Contact us</h1>
               <p className="mt-2 text-center text-sm text-ink-muted">
                 Tell us about custom plans, workflows, or integrations.
               </p>

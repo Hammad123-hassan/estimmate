@@ -9,9 +9,9 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-navy-100 bg-navy-900 text-white">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <div ref={gridRef} className="grid gap-10 md:grid-cols-[1.2fr_repeat(4,1fr)]">
-          <div data-stagger>
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+        <div ref={gridRef} className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-[1.2fr_repeat(4,1fr)] lg:gap-10">
+          <div data-stagger className="col-span-2 sm:col-span-3 lg:col-span-1">
             <Logo light />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
               Client-ready project estimates for software teams that need clarity on cost, timeline, and risk.
@@ -63,7 +63,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-center text-xs text-white/55 sm:mt-12 sm:flex-row sm:text-left">
           <p>© {new Date().getFullYear()} EstimMate. All rights reserved.</p>
           <p>Built for teams who estimate with confidence.</p>
         </div>
