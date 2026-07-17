@@ -84,24 +84,26 @@ export default function Navbar({ variant = 'light' }) {
   const closeMenu = () => setOpen(false)
 
   return (
-    <header className="sticky top-0 z-50 px-3 pt-3 sm:px-6">
+    <header className="sticky top-0 z-50 px-4 py-2 sm:px-6 sm:py-2">
       <nav
-        className={`mx-auto flex max-w-6xl items-center justify-between gap-2 rounded-2xl px-3 py-2.5 transition-all duration-300 sm:gap-4 sm:px-5 sm:py-3 ${
+        className={`mx-auto flex max-w-6xl items-center gap-3 rounded-2xl px-3 py-2.5 transition-all duration-300 sm:gap-4 sm:px-5 sm:py-3 ${
           scrolled || isDark
             ? isDark
               ? 'border border-white/15 bg-white/10 shadow-lg backdrop-blur-xl'
               : 'border border-brand-100/80 bg-white/90 shadow-lg shadow-brand-500/10 backdrop-blur-xl'
-            : 'border border-transparent bg-white/40 backdrop-blur-md'
+            : 'border border-transparent bg-transparent shadow-none'
         }`}
       >
-        <Logo light={isDark && !scrolled ? false : isDark} />
+        <div className="shrink-0">
+          <Logo light={isDark && !scrolled ? false : isDark} />
+        </div>
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden flex-1 items-center justify-center gap-0.5 lg:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className={`cursor-pointer rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                className={`cursor-pointer rounded-lg px-2.5 py-2 text-sm font-medium transition-colors xl:px-3 ${
                   isDark
                     ? 'text-white/85 hover:bg-white/10 hover:text-white'
                     : 'text-ink-muted hover:bg-brand-50 hover:text-ink'
@@ -113,7 +115,7 @@ export default function Navbar({ variant = 'light' }) {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="ml-auto hidden shrink-0 items-center gap-2 lg:flex">
           <AnimatedButton>
             <Button to="/login" variant={isDark ? 'outlineLight' : 'outline'} size="sm">
               <User className="h-4 w-4" />
@@ -130,7 +132,7 @@ export default function Navbar({ variant = 'light' }) {
 
         <button
           type="button"
-          className={`cursor-pointer rounded-lg p-2 transition-transform duration-200 active:scale-90 lg:hidden ${
+          className={`ml-auto cursor-pointer rounded-lg p-2 transition-transform duration-200 active:scale-90 lg:hidden ${
             isDark ? 'text-white' : 'text-ink'
           }`}
           aria-label={open ? 'Close menu' : 'Open menu'}

@@ -143,7 +143,7 @@ function SlideChrome({ slideIndex, active, totals, expanded, setExpanded, onTab 
             V2 <ChevronDown className="h-3 w-3" />
           </span>
         </div>
-        <div className="relative order-3 hidden w-full min-w-0 flex-1 sm:order-none sm:block sm:max-w-xs">
+        <div className="relative order-3 hidden w-full min-w-0 flex-1 sm:order-0 sm:block sm:max-w-xs">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" />
           <input
             className="field-input h-9 w-full rounded-full border bg-brand-50/40 pl-9 pr-3 text-sm outline-none"
@@ -175,7 +175,10 @@ function SlideChrome({ slideIndex, active, totals, expanded, setExpanded, onTab 
         <MetricChip label="SUM" value={`$${totals.sum.toLocaleString()}`} tone="text-brand-600" />
       </div>
 
-      <div data-hide-scrollbar className="flex gap-1 overflow-x-auto border-b border-brand-50 px-2">
+      <div
+        data-hide-scrollbar
+        className="flex gap-1 overflow-x-auto border-b border-brand-50 px-2"
+      >
         {tabs.map((t) => (
           <button
             key={t}
@@ -240,7 +243,7 @@ function ScopeTable({ expanded, setExpanded }) {
         </Button>
       </div>
 
-      <div className="overflow-x-auto rounded-lg [-webkit-overflow-scrolling:touch]">
+      <div data-hide-scrollbar className="overflow-x-auto rounded-lg">
         <table className="w-full min-w-[560px] text-left text-sm">
           <thead>
             <tr className="text-xs uppercase tracking-wide text-ink-muted">
