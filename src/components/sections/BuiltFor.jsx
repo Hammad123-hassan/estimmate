@@ -30,7 +30,7 @@ export default function BuiltFor() {
   })
 
   return (
-    <section id="built-for" className="relative overflow-hidden bg-section-navy py-14 text-white sm:py-20">
+    <section id="built-for" className="relative overflow-hidden bg-section-navy pt-14 pb-20 text-white sm:pt-20 sm:pb-28">
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-30" />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
@@ -61,9 +61,9 @@ export default function BuiltFor() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" className="block w-full" preserveAspectRatio="none" aria-hidden>
-          <path fill="#f3f6f4" d="M0,40 C360,90 1080,0 1440,50 L1440,80 L0,80 Z" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 leading-[0]">
+        <svg viewBox="0 0 1440 80" className="block h-12 w-full sm:h-16" preserveAspectRatio="none" aria-hidden>
+          <path fill="var(--color-surface)" d="M0,40 C360,90 1080,0 1440,50 L1440,80 L0,80 Z" />
         </svg>
       </div>
     </section>

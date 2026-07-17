@@ -46,8 +46,19 @@ export default function Features() {
   }, [slide])
 
   return (
-    <section id="features" className="relative overflow-hidden bg-section-navy py-14 text-white sm:py-20">
+    <section id="features" className="relative -mt-px overflow-hidden bg-section-navy pt-24 pb-14 text-white sm:pt-28 sm:pb-20">
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-30" />
+
+      <div className="pointer-events-none absolute inset-x-0 top-0 leading-[0]">
+        <svg
+          viewBox="0 0 1440 80"
+          className="block h-12 w-full rotate-180 sm:h-16"
+          preserveAspectRatio="none"
+          aria-hidden
+        >
+          <path fill="var(--color-surface)" d="M0,40 C360,90 1080,0 1440,50 L1440,80 L0,80 Z" />
+        </svg>
+      </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>

@@ -7,8 +7,8 @@ export default function QuoteSection() {
   const lessValue = useCountUp(56, inView)
 
   return (
-    <section className="bg-surface py-16 sm:py-20">
-      <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+    <section className="relative -mt-px bg-surface pt-12 pb-10 sm:pt-14 sm:pb-12">
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
         <Reveal>
           <div ref={ref} className="relative">
             <span
